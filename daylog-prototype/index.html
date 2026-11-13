@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日子 Daylog · 桌面日历事项</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></symbol>
+  <symbol id="i-minimize" viewBox="0 0 24 24"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" x2="21" y1="10" y2="3"/><line x1="3" x2="10" y1="21" y2="14"/></symbol>
+</svg>
+
+<div class="scene">
+  <div class="scene__sky"></div>
+  <div class="ridge ridge--far"></div>
+  <div class="ridge ridge--mid"></div>
+  <div class="ridge ridge--near"></div>
+  <div class="scene__grain"></div>
+  <p class="frame-label"><b>日子 DAYLOG</b><span>桌面日历 · 高保真交互原型</span></p>
+  <p class="frame-meta">本地优先 · 离线可用 · Tauri + React 方案</p>
+
+  <main class="app" id="app" data-bright="bright" aria-label="日子 Daylog 日历应用">
+    <div class="titlebar">
+      <div class="win-dots"><i></i><i></i><i></i></div>
+      <span class="app-name">日子 DAYLOG</span>
+      <span class="titlebar__hint">安静地贴在桌面上</span>
+    </div>
+
+    <header class="topbar">
+      <div class="date-block">
+        <button class="nav-btn" id="prevBtn" aria-label="上一页">
+          <svg class="icon"><use href="#i-chevron-left"></use></svg>
+        </button>
+        <div class="date-title">
+          <h1 id="dateTitle">11月</h1>
+          <p id="dateSub">2026年 · 点击日期查看当天</p>
+        </div>
+        <button class="nav-btn" id="nextBtn" aria-label="下一页">
+          <svg class="icon"><use href="#i-chevron-right"></use></svg>
+        </button>
+        <button class="today-btn" id="todayBtn">今天</button>
+      </div>
+
+      <div class="topbar__right">
+        <div class="segmented" role="tablist" aria-label="视图切换">
+          <button data-view="day" role="tab">日</button>
+          <button data-view="week" role="tab">周</button>
+          <button data-view="month" role="tab" class="is-active">月</button>
+        </div>
+        <span class="topbar__divider"></span>
+        <button class="icon-btn" id="openTodos" aria-label="全部待办" title="全部待办">
+          <svg class="icon"><use href="#i-list"></use></svg>
+        </button>
+        <button class="icon-btn icon-btn--accent" id="openNew" aria-label="新建事项" title="新建事项">
+          <svg class="icon"><use href="#i-plus"></use></svg>
+        </button>
+        <button class="icon-btn" id="openSettings" aria-label="设置" title="设置">
+          <svg class="icon"><use href="#i-settings"></use></svg>
+        </button>
+        <button class="icon-btn" id="minimizeBtn" aria-label="收起为悬浮球" title="收起为悬浮球">
+          <svg class="icon"><use href="#i-minimize"></use></svg>
+        </button>
+        <button class="icon-btn icon-btn--close" id="closeBtn" aria-label="关闭窗口" title="关闭">
+          <svg class="icon"><use href="#i-x"></use></svg>
+        </button>
+      </div>
+    </header>
+
+    <section class="view-area" id="viewArea"></section>
+
+    <footer class="statusbar">
+      <span id="statusLeft">本地模式 · 数据仅存本机</span>
+      <span id="statusRight">本月 0 项 · 已完成 0 项</span>
+    </footer>
+
+    <button class="scrim" id="scrim" aria-label="关闭面板" tabindex="-1"></button>
+
+    <aside class="drawer" id="todosDrawer" aria-label="全部待办" aria-hidden="true">
+      <header class="drawer__head">
+        <div>
+          <h2>全部待办</h2>
+          <p class="drawer__meta" id="todosMeta">共 0 项 · 已完成 0 项</p>
+        </div>
+        <button class="icon-btn" data-close-drawer aria-label="关闭待办面板">
+          <svg class="icon"><use href="#i-x"></use></svg>
+        </button>
+      </header>
+      <div class="filter-row" id="todoFilters">
+        <button class="filter is-active" data-filter="all">全部</button>
+        <button class="filter" data-filter="open">未完成</button>
+        <button class="filter" data-filter="done">已完成</button>
+      </div>
+      <div class="drawer__body" id="todosList"></div>
+    </aside>
+
+    <aside class="drawer" id="settingsDrawer" aria-label="设置" aria-hidden="true">
+      <header class="drawer__head">
+        <div>
+          <h2>设置</h2>
+          <p class="drawer__meta">外观、分类与数据都在这</p>
+        </div>
+        <button class="icon-btn" data-close-drawer aria-label="关闭设置面板">
+          <svg class="icon"><use href="#i-x"></use></svg>
+        </button>
+      </header>
+      <div class="drawer__body">
+        <section class="section">
+          <p class="section__title">外观</p>
+          <div class="field">
+            <span>面板透明度</span>
+            <span class="field__control">
+              <input type="range" class="range" id="alphaRange" min="0" max="100" step="1" value="72" aria-label="面板透明度">
+              <em id="alphaVal">72%</em>
+            </span>
+          </div>
+          <div class="field">
+            <span>文字亮度</span>
+            <span class="mini-seg" id="brightSeg">
+              <button data-bright="soft">柔和</button>
+              <button data-bright="bright" class="is-active">明亮</button>
+            </span>
+          </div>
+        </section>
+
+        <section class="section">
+          <p class="section__title">显示</p>
+          <div class="field">
+            <span>勾选完成后隐藏</span>
+            <button class="switch" id="toggleHideCompleted" role="switch" aria-checked="false" aria-label="勾选完成后隐藏"></button>
+          </div>
+          <div class="field">
+            <span>月视图列出任务</span>
+            <button class="switch" id="toggleMonthTasks" role="switch" aria-checked="true" aria-label="月视图列出任务"></button>
+          </div>
+        </section>
+
+        <section class="section">
+          <p class="section__title">分类</p>
+          <div id="catList" class="cat-list"></div>
+          <div class="cat-add">
+            <input class="input input--sm" id="addCatName" placeholder="新分类名称" maxlength="8" aria-label="新分类名称">
+            <button class="cat-color" id="addCatColor" aria-label="切换分类颜色"><i></i></button>
+            <button class="btn btn--sm" id="addCatBtn">添加</button>
+          </div>
+        </section>
+
+        <section class="section">
+          <p class="section__title">导出与导入</p>
+          <div class="btn-row">
+            <button class="btn" id="exportJson">JSON</button>
+            <button class="btn" id="exportCsv">CSV</button>
+            <button class="btn" id="exportIcs">日历 .ics</button>
+          </div>
+          <button class="btn btn--block" id="importJsonBtn">
+            <svg class="icon"><use href="#i-upload"></use></svg> 导入 JSON
+          </button>
+          <input type="file" id="importFile" accept="application/json,.json" hidden>
+          <p class="hint-text">导出后可换机迁移；导入按「内容 + 日期」判重。</p>
+        </section>
+
+        <section class="section">
+          <p class="section__title">同步（可选）</p>
+          <div class="sync-row">
+            <span class="sync-dot" id="syncDot"></span>
+            <div class="sync-copy">
+              <strong id="syncState">仅保存在本机</strong>
+              <span id="syncDetail">默认不联网，打开即用</span>
+            </div>
+            <button class="btn btn--sm" id="syncBtn">开启同步</button>
+          </div>
+          <p class="hint-text">后续可接入自建同步服务或 WebDAV；原型内为模拟同步。</p>
+        </section>
+
+        <section class="section">
+          <p class="section__title">数据</p>
+          <button class="btn btn--danger btn--block" id="clearAll">清空全部待办</button>
+        </section>
+      </div>
+    </aside>
+
+    <div class="modal-layer" id="modalLayer" aria-hidden="true">
+      <div class="scrim scrim--modal" data-close-modal></div>
+      <form class="modal" id="taskForm" novalidate>
+        <header class="modal__head">
+          <div>
+            <h2>新建事项</h2>
+            <p>给某一天留个提醒</p>
+          </div>
+          <button class="icon-btn" type="button" data-close-modal aria-label="关闭">
+            <svg class="icon"><use href="#i-x"></use></svg>
+          </button>
+        </header>
+
+        <div class="form-group">
+          <label class="field-label" for="taskTitle">事项内容</label>
+          <input class="input" id="taskTitle" placeholder="例如：整理需求文档" autocomplete="off" maxlength="40">
+          <p class="form-error" id="titleError"></p>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="field-label" for="taskDate">日期</label>
+            <input class="input" type="date" id="taskDate">
+          </div>
+          <div class="form-group">
+            <label class="field-label" for="taskTime">时间</label>
+            <input class="input" type="time" id="taskTime" disabled>
+          </div>
+        </div>
+
+        <label class="check-line">
+          <input type="checkbox" id="taskAllDay" checked>
+          <span>全天事项</span>
+        </label>
+
+        <div class="form-group">
+          <span class="field-label">分类</span>
+          <div class="chip-row" id="catChips"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label" for="taskNote">备注（可选）</label>
+          <textarea class="textarea" id="taskNote" rows="2" maxlength="120" placeholder="补充一点上下文"></textarea>
+        </div>
+
+        <footer class="modal__foot">
+          <button class="btn btn--ghost" type="button" data-close-modal>取消</button>
+          <button class="btn btn--primary" type="submit" id="saveTaskBtn">保存事项</button>
+        </footer>
+      </form>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <span class="resize-grip" aria-hidden="true"></span>
+  </main>
+
+  <button class="widget" id="widget" aria-label="展开日子日历" title="展开日子日历" aria-hidden="true">
+    <span class="widget__ticks" aria-hidden="true"></span>
+    <span class="widget__content">
+      <span class="widget__time" id="widgetTime">12:00</span>
+      <span class="widget__date" id="widgetDate">11/10 周二</span>
+    </span>
+  </button>
+</div>
+
+<script src="mock.js"></script>
+<script src="api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

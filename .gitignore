@@ -1,0 +1,15 @@
+# 依赖
+node_modules/
+
+# Rust 构建产物
+daylog-desktop/src-tauri/target/
+
+# 本地可执行安装包（改用 GitHub Releases 分发）
+/Daylog.exe
+/Daylog-setup.exe
+
+# 其他
+.screenshots/
+*.log
+.DS_Store
+Thumbs.db
